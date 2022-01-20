@@ -1,8 +1,8 @@
 let arr = JSON.parse(localStorage.getItem("products"));
 let recommend_prods = arr["all soaps"].slice(4, 8);
 
-let cart_items = JSON.parse(localStorage.getItem("cart_items")) || [];
-let count_str = cart_items.length + " items added for Shipping";
+let basket_items = JSON.parse(localStorage.getItem("basket_items")) || [];
+let count_str = basket_items.length + " items added for Shipping";
 document.querySelector("#count_text").append(count_str);
 
 displayRecommend(recommend_prods);
@@ -51,12 +51,12 @@ function displayRecommend(arr) {
   });
 }
 
-displayCart(cart_items);
+displaybasket(basket_items);
 
-function displayCart(arr) {
-  document.querySelector(".display_cart").innerHTML = "";
+function displaybasket(arr) {
+  document.querySelector(".display_basket").innerHTML = "";
   arr.map(function (elem, index) {
-    cart_div = document.querySelector(".display_cart");
+    basket_div = document.querySelector(".display_basket");
 
     let img_div = document.createElement("div");
     let img = document.createElement("img");
@@ -114,7 +114,7 @@ function displayCart(arr) {
     del.textContent = "Remove item";
     del_div.append(del);
 
-    cart_div.append(img_div, price_div, qty_div, del_div);
+    basket_div.append(img_div, price_div, qty_div, del_div);
 
     del.addEventListener("click", function () {
       deleteItem(index);
@@ -135,9 +135,9 @@ function decrement(index, count, price) {
 }
 
 function deleteItem(index) {
-  cart_items.splice(index, 1);
-  localStorage.setItem("cart_items", JSON.stringify(cart_items));
-  displayCart(cart_items);
+  basket_items.splice(index, 1);
+  localStorage.setItem("basket_items", JSON.stringify(basket_items));
+  displaybasket(basket_items);
 }
 
 document.querySelector("#submit_bag").addEventListener("click", function () {

@@ -1,8 +1,8 @@
-let cart_arr = JSON.parse(localStorage.getItem("cart_items"))||[];
+let basket_arr = JSON.parse(localStorage.getItem("basket_items"))||[];
 let shipping_details = JSON.parse(localStorage.getItem("shipping_data"))||[];
 
 console.log(shipping_details)
-displayCart(cart_arr)
+displaybasket(basket_arr)
 
 document.querySelector("#myForm").addEventListener("submit",billing)
 
@@ -27,9 +27,9 @@ function billing(event)
 
 
 
-function displayCart(arr)
+function displaybasket(arr)
 {   
-    let show_cart = document.querySelector(".show_cart")
+    let show_basket = document.querySelector(".show_basket")
     arr.map(function(elem){
         let div = document.createElement("div");
         let img = document.createElement("img");
@@ -45,6 +45,6 @@ function displayCart(arr)
 
         text_div.setAttribute("id","text_div")
         div.append(img,text_div)
-        show_cart.append(div)
+        show_basket.append(div)
     })
 }

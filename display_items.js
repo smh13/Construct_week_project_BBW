@@ -182,7 +182,7 @@ var sanitizers = [
 ];
 
 // Getting all the data from the localStorage.
-var bag_items = JSON.parse(localStorage.getItem("cart_items")) || [];
+var bag_items = JSON.parse(localStorage.getItem("basket_items")) || [];
 var all_soaps = foaming_soaps.concat(gel_soaps);
 
 var product_data = {
@@ -274,8 +274,8 @@ function displayProds(arr) {
     button.textContent = "Add to Bag";
     button.addEventListener("click", function () {
       bag_items.push(elem);
-      localStorage.setItem("cart_items", JSON.stringify(bag_items));
-      window.alert("Item added to the cart");
+      localStorage.setItem("basket_items", JSON.stringify(bag_items));
+      window.alert("Item added to the basket");
     });
 
     let img = document.createElement("img");
@@ -290,9 +290,9 @@ function displayProds(arr) {
 
 document.querySelector("#submit_bag").addEventListener("click", function () {
   if (bag_items.length == 0) {
-    window.alert("No items added into Cart");
+    window.alert("No items added into basket");
   } else {
-    window.location.href = "Cart.html";
+    window.location.href = "basket.html";
   }
 });
 

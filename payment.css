@@ -23,12 +23,12 @@
   width: 100%;
 }
 
-.show_cart img {
+.show_basket img {
   width: 25%;
   height: 25%;
 }
 
-.show_cart {
+.show_basket {
   padding: 20px;
   height: 250px;
   overflow: scroll;
@@ -46,7 +46,7 @@
   margin-left: 50px;
 }
 
-.show_cart > div {
+.show_basket > div {
   display: flex;
   margin-bottom: 20px;
   font-size: 14px;

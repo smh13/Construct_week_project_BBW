@@ -282,11 +282,9 @@ i {
   background: #0b7dda;
 }
 #hed:hover {
-    
-    color: #0f609f;
-    font-family: Arial, sans-serif;
-    font-weight: 400;
-      
+  color: #0f609f;
+  font-family: Arial, sans-serif;
+  font-weight: 400;
 }
 #ser1 {
   height: 38%;

@@ -1,4 +1,4 @@
-let basket_arr = JSON.parse(localStorage.getItem("basket_items"))||[];
+let basket = JSON.parse(localStorage.getItem("basket_items"))||[];
 let shipping_details = JSON.parse(localStorage.getItem("shipping_data"))||[];
 
 // Populating the total values.
@@ -10,30 +10,12 @@ document.querySelector("#sub_total").textContent = "$"+total;
 document.querySelector("#total").textContent = "$"+Number(total+4.5+5.25);
 document.querySelector("#shipping_type").textContent = shipping_details['shipping_method']
 
+
 // Calling the functions to display basket and shipping details.
 displaybasket(basket_arr)
 displayShipping(shipping_details)
-document.querySelector("#myForm").addEventListener("submit",billing)
 
-function billing(event)
-{
-    event.preventDefault()
-    let form = document.querySelector("#myForm");
-    let obj = {
-        "first_name":form.first_name.value,
-        "last_name":form.last_name.value,
-        "Address1":form.addr1.value,
-        "Address2":form.addr2.value,
-        "country":form.country.value,
-        "state":form.state.value,
-        "zip_code":form.zip_code.value,
-        "phone":form.phone.value,
-        "shipping_method":document.querySelector('input[name="shipping_method"]:checked').value
-    }
-    shipping_details.push(obj)
-    localStorage.setItem("shipping_details",JSON.stringify(shipping_details))
-    window.location.href = "payment.html"
-}
+
 function displaybasket(arr)
 {   
     let show_basket = document.querySelector(".show_basket")
@@ -68,27 +50,4 @@ function displayShipping(elem)
     shipping_method.textContent = "Order will be delievered by "+elem['shipping_method']+" services"
 
     shipping_arr.append(name,address,shipping_method)
-}
-
-
-document.querySelector("#myForm").addEventListener("submit",payFunction);
-
-function payFunction(event)
-{   
-    let form = document.querySelector("#myForm");
-    event.preventDefault()
-    var obj = {
-        "card_number":form.number.value,
-        "cvv":form.cvv.value,
-        "exp_date":form.exp_date.value,
-        "name":form.name.value
-    }
-    if(document.querySelector("#OTP").value == "6969")
-    {
-        localStorage.setItem("card_details",JSON.stringify(obj))
-        window.location.href="thankYou.html";
-    }
-    else{
-        window.alert("Wrong OTP entered!")
-    }
 }
